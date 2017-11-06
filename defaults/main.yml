@@ -1,0 +1,6 @@
+docker_cmd: /usr/bin/docker
+build_base_dir: '~{{ ansible_user }}/.docker-build-context'
+host_build_context: '{{ build_base_dir }}/{{ build_context | hash("sha1") }}'
+extra_build_options: []
+build_args: []
+pull: false

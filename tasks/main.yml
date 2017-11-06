@@ -1,0 +1,16 @@
+- name: '{{ build_context }} - copy build context'
+  become: false
+  copy:
+    src: '{{ build_context }}/'
+    dest: '{{ host_build_context }}'
+    mode: 0700
+
+- name: '{{ build_context }} - build image'
+  become: true
+  command: '{{ docker_cmd | quote }}
+              build
+              {{ extra_build_options | join(" ") }}
+              {% for arg in build_args %}--build-arg {{ arg }}{% endfor %}
+              {{ "--pull" if pull else "" }}
+              {{ host_build_context | quote }}
+              {%for tag in image_tags %}--tag {{ tag }}{% endfor %}'

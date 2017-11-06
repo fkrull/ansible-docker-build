@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Felix Krull
+  description: copy a Docker build context and build an image
+  license: 2-clause BSD
+  min_ansible_version: 2.2
+  platforms:
+    - name: Ubuntu
+      versions: [all]
+    - name: Debian
+      versions: [all]
+  galaxy_tags:
+    - docker
+    - image
+    - container
+dependencies: []
